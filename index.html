@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilt Effect | Vanilla JS</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card-overlay" data-tilt="20">
+            <div class="card" data-title="Spider Man">
+                <h1 class="brand">Marvel</h1>
+                <img class="main-img" src="./images/spider-man.png" alt="spider-man">
+                <img class="sub-img" src="./images/spider-1.png" alt="spider">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let card = document.querySelector(".card");
+        let cardOverlay = document.querySelector(".card-overlay");
+        cardOverlay.addEventListener("mousemove", (e)=>{
+            let x = (((window.innerWidth / 2) - e.pageX) / cardOverlay.dataset.tilt) * 1;
+            let y = (((window.innerHeight / 2) - e.pageY) / cardOverlay.dataset.tilt) * -1;
+            card.style.transform = `rotateY(${x}deg) rotateX(${y}deg) scale(1.02)`;
+        });
+        cardOverlay.addEventListener("mouseleave", ()=>{
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+
+
+
+        // let card = document.querySelectorAll(".card");
+        // let cardOverlay = document.querySelectorAll(".card-overlay");
+
+
+        // cardOverlay.forEach(cardOverlay => {
+        //     cardOverlay.addEventListener("mousemove", (e)=>{
+        //         let x = (((window.innerWidth / 2) - e.pageX) / 20) * -1;
+        //         let y = (((window.innerHeight / 2) - e.pageY) / 20) * -1;
+        //         card.forEach(card => {
+        //             card.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        //         });
+        //     })
+        // });
+
+        // cardOverlay.forEach(cardOverlay => {
+        //     cardOverlay.addEventListener("mouseleave", ()=>{
+        //         card.forEach(card => {
+        //             card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        //         });
+        //     })
+        // });
+    </script>
+    
+</body>
+</html>
